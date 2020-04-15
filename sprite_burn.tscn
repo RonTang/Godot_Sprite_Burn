@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://sprite_burn.gd" type="Script" id=1]
+[ext_resource path="res://click_burn.shader" type="Shader" id=2]
+[ext_resource path="res://assets/sprite1.png" type="Texture" id=3]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 2 )
+shader_param/ash = Color( 0, 0, 0, 1 )
+shader_param/fire = Color( 0.972549, 0.0745098, 0.0745098, 1 )
+shader_param/OCTAVES = 5
+shader_param/start_time = 5435.39
+shader_param/duration = 2.0
+shader_param/editor_time = 5437.85
+shader_param/global_transform = Transform2D( 1.07317, 0, 0, 1, 540.475, 288.288 )
+shader_param/center_position = Vector2( 540.475, 288.288 )
+shader_param/mouse_position = Vector2( 582.226, 396.301 )
+
+[node name="sprite" type="Sprite"]
+material = SubResource( 1 )
+position = Vector2( 540.475, 288.288 )
+scale = Vector2( 1.07317, 1 )
+texture = ExtResource( 3 )
+script = ExtResource( 1 )
