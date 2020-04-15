@@ -9,12 +9,12 @@ shader = ExtResource( 2 )
 shader_param/ash = Color( 0, 0, 0, 1 )
 shader_param/fire = Color( 0.972549, 0.0745098, 0.0745098, 1 )
 shader_param/OCTAVES = 5
-shader_param/start_time = 26731.2
+shader_param/start_time = 28519.1
 shader_param/duration = 4.0
-shader_param/editor_time = 26765.5
+shader_param/editor_time = 28544.8
 shader_param/global_transform = Transform2D( 1.07317, 0, 0, 1, 552.003, 298.634 )
 shader_param/global_position = Vector2( 552.003, 298.634 )
-shader_param/mouse_position = Vector2( 1485.76, 1162.18 )
+shader_param/mouse_position = Vector2( 4.30792, 948.394 )
 
 [node name="sprite" type="Sprite"]
 material = SubResource( 1 )

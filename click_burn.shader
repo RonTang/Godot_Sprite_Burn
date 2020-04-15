@@ -1,6 +1,5 @@
 shader_type canvas_item;
 
-
 uniform vec4 ash : hint_color;//灰烬颜色
 uniform vec4 fire : hint_color;//火热颜色
 uniform int OCTAVES = 5; //分形布朗运动迭代次数
@@ -13,7 +12,7 @@ uniform mat4 global_transform;   //全局变换矩阵
 uniform vec2 global_position;    //精灵全局坐标
 uniform vec2 mouse_position;     //鼠标全局坐标
 //values that from vertex to fragment
-varying vec2 world_position;     //每个独立像素点坐标
+varying vec2 world_position;     //每个独立像素点全局坐标
 
 
 float remap_range(float input, float minInput, float maxInput, float minOutput, float maxOutput)
@@ -71,6 +70,8 @@ vec4 burn(vec4 original, vec2 uv, float time, vec2 texture_size) {
 
 	float factor = remap_range(noises,0.0,1.0,0.5,1.0);//噪声值映射到0.5-1.0
 	float percent = (editor_time- start_time) / (duration * 0.5) * factor ;
+	float inner_edge = percent;
+	float outer_edge = inner_edge + thickness;
 	
 	vec2 mc_off = mouse_position - global_position;
 	mc_off.x *= texture_size.x;
@@ -80,9 +81,8 @@ vec4 burn(vec4 original, vec2 uv, float time, vec2 texture_size) {
 	vec2 wm_off = world_position - mouse_position;
 	wm_off.x *= texture_size.x;
 	wm_off.y *= texture_size.y;
-	float inner_edge = percent;
-	float outer_edge = inner_edge + thickness;
 	float dist =  remap_range(length(wm_off),0.0,max_dis,0.0,1.0);//燃烧距离dist映射0.0-1.0
+	
 	if (inner_edge > dist) //燃烧内边
 		return vec4(0.0);  
 	if (outer_edge > dist) //燃烧外边
